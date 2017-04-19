@@ -10,6 +10,7 @@
 		F762412C1EA79FFF00E990CE /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76241291EA79FFF00E990CE /* CommandLine.swift */; };
 		F762412D1EA79FFF00E990CE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = F762412A1EA79FFF00E990CE /* Option.swift */; };
 		F762412E1EA79FFF00E990CE /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F762412B1EA79FFF00E990CE /* StringExtensions.swift */; };
+		F76241311EA7A08D00E990CE /* PathKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76241301EA7A08D00E990CE /* PathKit.swift */; };
 		F7C4CA491EA724B100C9757D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C4CA481EA724B100C9757D /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		F76241291EA79FFF00E990CE /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		F762412A1EA79FFF00E990CE /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		F762412B1EA79FFF00E990CE /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		F76241301EA7A08D00E990CE /* PathKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathKit.swift; sourceTree = "<group>"; };
 		F7C4CA451EA724B100C9757D /* date-adjuster */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "date-adjuster"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C4CA481EA724B100C9757D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,6 +56,14 @@
 			path = CommandLineKit;
 			sourceTree = "<group>";
 		};
+		F762412F1EA7A08D00E990CE /* PathKit */ = {
+			isa = PBXGroup;
+			children = (
+				F76241301EA7A08D00E990CE /* PathKit.swift */,
+			);
+			path = PathKit;
+			sourceTree = "<group>";
+		};
 		F7C4CA3C1EA724B100C9757D = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +85,7 @@
 			children = (
 				F7C4CA481EA724B100C9757D /* main.swift */,
 				F76241281EA79FFF00E990CE /* CommandLineKit */,
+				F762412F1EA7A08D00E990CE /* PathKit */,
 			);
 			path = "date-adjuster";
 			sourceTree = "<group>";
@@ -139,6 +150,7 @@
 			files = (
 				F762412E1EA79FFF00E990CE /* StringExtensions.swift in Sources */,
 				F7C4CA491EA724B100C9757D /* main.swift in Sources */,
+				F76241311EA7A08D00E990CE /* PathKit.swift in Sources */,
 				F762412D1EA79FFF00E990CE /* Option.swift in Sources */,
 				F762412C1EA79FFF00E990CE /* CommandLine.swift in Sources */,
 			);
