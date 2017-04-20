@@ -10,9 +10,9 @@ import Foundation
 
 struct DateAdjuster {
     
-    static func adjustDateOfItems(atPaths paths: [String], withTimeInterval timeInterval: TimeInterval) {
+    static func adjustDateOfItems(atPaths paths: [String], withTimeInterval timeInterval: TimeInterval, modified: Bool) {
         for path in paths {
-            adjustDateOfItem(atPath: path, timeInterval: timeInterval)
+            adjustDateOfItem(atPath: path, timeInterval: timeInterval, modified: modified)
         }
     }
  
@@ -32,17 +32,21 @@ struct DateAdjuster {
         return rawCreationDate as? Date
     }
     
-    private static func setCreationDateOfItem(atPath path: String, creationDate: Date) {
+    private static func setDate(_ dateType: FileAttributeKey, date: Date, ofItemAtPath path: String) {
         let fileManager = FileManager()
-        try? fileManager.setAttributes([FileAttributeKey.creationDate: creationDate], ofItemAtPath: path)
+        try? fileManager.setAttributes([dateType: date], ofItemAtPath: path)
     }
     
-    private static func adjustDateOfItem(atPath path: String, timeInterval: TimeInterval) {
+    private static func adjustDateOfItem(atPath path: String, timeInterval: TimeInterval, modified: Bool) {
         guard let creationDate = creationDateOfItem(atPath: path) else {
             return
         }
         let adjustedDate = creationDate.addingTimeInterval(timeInterval)
-        setCreationDateOfItem(atPath: path, creationDate: adjustedDate)
+        setDate(FileAttributeKey.creationDate, date: adjustedDate, ofItemAtPath: path)
+        
+        if modified {
+            setDate(FileAttributeKey.modificationDate, date: adjustedDate, ofItemAtPath: path)
+        }
         
         print("Adjusted date of \(path) from \(creationDate) to \(adjustedDate)")
     }

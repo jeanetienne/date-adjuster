@@ -13,11 +13,13 @@ let cli = CommandLine()
 let filePath = MultiStringOption(shortFlag: "f", longFlag: "file", required: true,
                                  helpMessage: "Path to the input file(s).")
 let timeInterval = IntOption(shortFlag: "t", longFlag: "time-interval", required: true,
-                                 helpMessage: "Number of seconds to add (or take away if negative) from the original creation date.")
+                             helpMessage: "Number of seconds to add (or take away if negative) from the original creation date.")
+let modificationDate = BoolOption(shortFlag: "m", longFlag: "modification-date",
+                                  helpMessage: "Also updates the modification date.")
 let help = BoolOption(shortFlag: "h", longFlag: "help",
                       helpMessage: "Prints a help message.")
 
-cli.addOptions(filePath, timeInterval, help)
+cli.addOptions(filePath, timeInterval, modificationDate, help)
 
 do {
     try cli.parse()
@@ -27,7 +29,7 @@ do {
         
         if let paths = filePath.value {
             let absolutePaths = InputCleaner.makeAbsolute(paths: paths)
-            DateAdjuster.adjustDateOfItems(atPaths: absolutePaths, withTimeInterval: timeIntervalValue)
+            DateAdjuster.adjustDateOfItems(atPaths: absolutePaths, withTimeInterval: timeIntervalValue, modified: modificationDate.value)
         }
     } else {
         print("Could not read the time interval")
