@@ -21,6 +21,17 @@ cli.addOptions(filePath, timeInterval, help)
 
 do {
     try cli.parse()
+
+    if let rawTimeIntervalValue = timeInterval.value {
+        let timeIntervalValue = Double(rawTimeIntervalValue) as TimeInterval
+        
+        if let paths = filePath.value {
+            let absolutePaths = InputCleaner.makeAbsolute(paths: paths)
+            DateAdjuster.adjustDateOfItems(atPaths: absolutePaths, withTimeInterval: timeIntervalValue)
+        }
+    } else {
+        print("Could not read the time interval")
+    }
 } catch {
     cli.printUsage(error)
     exit(EX_USAGE)
